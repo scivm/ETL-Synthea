@@ -21,7 +21,7 @@
 LoadVocabFromCsv <- function (connectionDetails, cdmDatabaseSchema, vocabFileLoc)
 {
 
-    csvList <- c("concept.csv","vocabulary.csv","concept_ancestor.csv","concept_relationship.csv","relationship.csv","concept_synonym.csv","domain.csv","concept_class.csv")
+    csvList <- c("concept.csv","vocabulary.csv","concept_ancestor.csv","concept_relationship.csv","relationship.csv","concept_synonym.csv","domain.csv","concept_class.csv","drug_strength.csv")
 	
 	conn <- DatabaseConnector::connect(connectionDetails) 
 	
@@ -30,13 +30,12 @@ LoadVocabFromCsv <- function (connectionDetails, cdmDatabaseSchema, vocabFileLoc
 	    vocabTable <- data.table::fread(file = paste0(vocabFileLoc, "/", csv), stringsAsFactors = FALSE, header = TRUE, sep = "\t", na.strings = NULL)    
 
 	    # Format Dates for tables that need it
-        if (base::identical(csv,"concept.csv") || base::identical(csv,"concept_relationship.csv")) {
-       
+        if (base::identical(csv,"concept.csv") || base::identical(csv,"concept_relationship.csv") || base::identical(csv,"drug_strength.csv")) {
+
 	        vocabTable$valid_start_date <- as.Date(as.character(vocabTable$valid_start_date),"%Y%m%d")
             vocabTable$valid_end_date   <- as.Date(as.character(vocabTable$valid_end_date),"%Y%m%d")
         }
-	
-			
+
         writeLines(paste0("Loading: ",csv))
 
 	    DatabaseConnector::insertTable(conn,paste0(cdmDatabaseSchema,".",strsplit(csv,"[.]")[[1]][1]), data=as.data.frame(vocabTable), dropTableIfExists = FALSE, createTable = FALSE, progressBar = TRUE)
