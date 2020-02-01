@@ -5,6 +5,8 @@
 
 if object_id('tempdb..#tmp_de', 'U') is not null drop table #tmp_de;
 
+CREATE TEMP TABLE tmp_de AS
+
 WITH
 ctePreDrugTarget(drug_exposure_id, person_id, ingredient_concept_id, drug_exposure_start_date, days_supply, drug_exposure_end_date) AS
 (-- Normalize DRUG_EXPOSURE_END_DATE to either the existing drug exposure end date, or add days supply, or add 1 day to the start date
