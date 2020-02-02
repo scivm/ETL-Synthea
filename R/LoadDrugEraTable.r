@@ -3,7 +3,7 @@
 #' @description This function loads the CDM Event tables with Synthea data.  The tables that comprise the Vocabulary are
 #'               loaded via \cr\code{LoadVocabTables()}.
 #'
-#' @usage LoadEventTables (connectionDetails, cdmDatabaseSchema, syntheaDatabaseSchema)
+#' @usage LoadDrugEraTable(connectionDetails, cdmDatabaseSchema, syntheaDatabaseSchema)
 #'
 #' @details This function assumes \cr\code{createEventTables()}, \cr\code{createSyntheaTables()}, \cr\code{LoadSyntheaTables()},
 #'              and \cr\code{LoadVocabTables()} have all been run.
