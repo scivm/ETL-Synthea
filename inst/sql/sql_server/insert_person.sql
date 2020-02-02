@@ -41,7 +41,7 @@ select
 		when upper(p.race) = 'HISPANIC'
 		then 38003563 else 0
 	end,
-	NULL,
+	p.id,
 	NULL,
 	NULL,
 	p.id,
