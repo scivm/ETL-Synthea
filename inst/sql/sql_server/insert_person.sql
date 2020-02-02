@@ -41,7 +41,7 @@ select
 		when upper(p.race) = 'HISPANIC'
 		then 38003563 else 0
 	end,
-	p.id,
+	row_number()over(order by p.person_id),
 	NULL,
 	NULL,
 	p.id,
