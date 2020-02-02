@@ -46,6 +46,8 @@ LoadEventTables <- function (connectionDetails, cdmDatabaseSchema, syntheaDataba
 
         writeLines(paste0("Running: ",query))
 
+	print(translatedSql)
+
         DatabaseConnector::executeSql(conn, translatedSql, progressBar = TRUE, reportOverallTime = TRUE)
 
     }
