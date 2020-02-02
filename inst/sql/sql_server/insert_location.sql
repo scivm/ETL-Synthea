@@ -23,6 +23,6 @@ SELECT
     'FI',
     NULL,
     p.lat,
-    p.long
+    p.lon
     
 FROM @synthea_schema.patients p
