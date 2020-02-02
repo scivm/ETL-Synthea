@@ -25,7 +25,7 @@
 #'@export
 
 
-LoadEventTables <- function (connectionDetails, cdmDatabaseSchema, syntheaDatabaseSchema, vocabDatabaseSchema = cdmDatabaseSchema)
+LoadDrugEraTable <- function (connectionDetails, cdmDatabaseSchema, syntheaDatabaseSchema, vocabDatabaseSchema = cdmDatabaseSchema)
 {
 
     queries <- c("insert_drug_era.sql")
