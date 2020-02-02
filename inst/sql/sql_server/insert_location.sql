@@ -17,11 +17,11 @@ SELECT
     p.address,
     NULL,
     p.city,
-    p.state,
+    NULL,
     p.zip,
     p.county,
     'FI',
-    NULL,
+    p.id,
     p.lat,
     p.lon
     
