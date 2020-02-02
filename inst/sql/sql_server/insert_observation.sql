@@ -49,7 +49,7 @@ select
   0 value_as_concept_id,
   0 qualifier_concept_id,
   0 unit_concept_id,
-  NULL provider_id,
+  cast(null as bigint) provider_id,
   fv.visit_occurrence_id_new visit_occurrence_id,
   0 visit_detail_id,
   a.code observation_source_value,
@@ -57,13 +57,13 @@ select
   cast(null as varchar) unit_source_value,
   cast(null as varchar) qualifier_source_value
 from @synthea_schema.allergies a
-  left join @vocab_schema.source_to_standard_vocab_map   srctostdvm
+  join @vocab_schema.source_to_standard_vocab_map   srctostdvm
 on srctostdvm.source_code             = a.code
  and srctostdvm.target_domain_id        = 'Observation'
  and srctostdvm.target_vocabulary_id    = 'SNOMED'
  and srctostdvm.source_vocabulary_id    = 'SNOMED'
  and srctostdvm.target_standard_concept = 'S'
- and srctostdvm.target_invalid_reason IS NULL
+ and srctostdvm.target_invalid_reason IN (NULL,'')
 left join @vocab_schema.source_to_source_vocab_map srctosrcvm
   on srctosrcvm.source_code             = a.code
  and srctosrcvm.source_vocabulary_id    = 'SNOMED'
@@ -83,7 +83,7 @@ select
   0,
   0,
   0,
-  NULL,
+  cast(null as bigint) provider_id,
   fv.visit_occurrence_id_new visit_occurrence_id,
   0,
   c.code,
@@ -93,11 +93,11 @@ select
 from @synthea_schema.conditions c
   left join @vocab_schema.source_to_standard_vocab_map   srctostdvm
 on srctostdvm.source_code             = c.code
- and srctostdvm.target_domain_id        = 'Observation'
+ and srctostdvm.target_domain_id        not in ('Condition', 'Procedure', 'Device', 'Drug', 'Measurement')
  and srctostdvm.target_vocabulary_id    = 'SNOMED'
  and srctostdvm.source_vocabulary_id    = 'SNOMED'
  and srctostdvm.target_standard_concept = 'S'
- and srctostdvm.target_invalid_reason IS NULL
+ and srctostdvm.target_invalid_reason IN (NULL,'')
 left join @vocab_schema.source_to_source_vocab_map srctosrcvm
   on srctosrcvm.source_code              = c.code
  and srctosrcvm.source_vocabulary_id     = 'SNOMED'
