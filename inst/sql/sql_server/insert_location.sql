@@ -7,7 +7,10 @@ INSERT INTO @cdm_schema.location
 	    state,
 	    zip,
 	    county,
-	    location_source_value
+	    country,
+	    location_source_value,
+	    latitude,
+	    longitude
 )
 SELECT
     row_number()over(order by p.id),
@@ -17,5 +20,9 @@ SELECT
     p.state,
     p.zip,
     p.county,
-    NULL
+    p.country
+    NULL,
+    p.lat
+    p.long
+    
 FROM @synthea_schema.patients p
