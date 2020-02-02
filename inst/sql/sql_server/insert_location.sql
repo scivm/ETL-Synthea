@@ -20,7 +20,7 @@ SELECT
     p.state,
     p.zip,
     p.county,
-    p.country
+    'FI',
     NULL,
     p.lat
     p.long
