@@ -22,7 +22,7 @@ SELECT
     p.county,
     'FI',
     NULL,
-    p.lat
+    p.lat,
     p.long
     
 FROM @synthea_schema.patients p
