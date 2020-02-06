@@ -35,7 +35,7 @@ select
   NULL,
   0
 from @synthea_schema.conditions c
-  join @vocab_schema.source_to_standard_vocab_map srctostdvm
+left join @vocab_schema.source_to_standard_vocab_map srctostdvm
 on srctostdvm.source_code             = c.code
  and srctostdvm.target_domain_id        = 'Condition'
  and srctostdvm.target_vocabulary_id    = 'SNOMED'
