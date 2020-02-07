@@ -49,8 +49,8 @@ LoadSyntheaTables <- function (connectionDetails, syntheaDatabaseSchema, synthea
         if("DATE"        %in% colnames(syntheaTable))  syntheaTable$DATE         <- as.Date(syntheaTable$DATE,format="%Y-%m-%d")
         if("BIRTHDATE"   %in% colnames(syntheaTable))  syntheaTable$BIRTHDATE    <- as.Date(syntheaTable$BIRTHDATE,format="%Y-%m-%d")
         if("DEATHDATE"   %in% colnames(syntheaTable))  syntheaTable$DEATHDATE    <- as.Date(syntheaTable$DEATHDATE,format="%Y-%m-%d")
-		if("CODE"        %in% colnames(syntheaTable))  syntheaTable$CODE         <- as.character(syntheaTable$CODE)
-		if("REASONCODE"  %in% colnames(syntheaTable))  syntheaTable$REASONCODE   <- as.character(syntheaTable$REASONCODE)
+	if("CODE"        %in% colnames(syntheaTable))  syntheaTable$CODE         <- as.factor(syntheaTable$CODE)
+	if("REASONCODE"  %in% colnames(syntheaTable))  syntheaTable$REASONCODE   <- as.factor(syntheaTable$REASONCODE)
         if("PHONE"       %in% colnames(syntheaTable))  syntheaTable$PHONE        <- as.character(syntheaTable$PHONE)
         if("UTILIZATION" %in% colnames(syntheaTable))  syntheaTable$UTILIZATION  <- as.numeric(syntheaTable$UTILIZATION)
 
