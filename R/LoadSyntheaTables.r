@@ -44,6 +44,7 @@ LoadSyntheaTables <- function (connectionDetails, syntheaDatabaseSchema, synthea
 	
         # experiencing type conversion errors and need to explicitly case some columns
 
+	str(syntheaTable)
         if("START"       %in% colnames(syntheaTable))  syntheaTable$START        <- as.Date(syntheaTable$START,format="%Y-%m-%d")
         if("STOP"        %in% colnames(syntheaTable))  syntheaTable$STOP         <- as.Date(syntheaTable$STOP,format="%Y-%m-%d")
         if("DATE"        %in% colnames(syntheaTable))  syntheaTable$DATE         <- as.Date(syntheaTable$DATE,format="%Y-%m-%d")
@@ -53,7 +54,7 @@ LoadSyntheaTables <- function (connectionDetails, syntheaDatabaseSchema, synthea
 	if("REASONCODE"  %in% colnames(syntheaTable))  syntheaTable$REASONCODE   <- as.factor(syntheaTable$REASONCODE)
         if("PHONE"       %in% colnames(syntheaTable))  syntheaTable$PHONE        <- as.character(syntheaTable$PHONE)
         if("UTILIZATION" %in% colnames(syntheaTable))  syntheaTable$UTILIZATION  <- as.numeric(syntheaTable$UTILIZATION)
-
+        str(syntheaTable)
 		
 	    DatabaseConnector::insertTable(conn,paste0(syntheaDatabaseSchema,".",strsplit(csv,"[.]")[[1]][1]), data=as.data.frame(syntheaTable), dropTableIfExists = FALSE, createTable = FALSE, progressBar = TRUE)
 	}
