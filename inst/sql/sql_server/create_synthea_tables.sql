@@ -38,6 +38,7 @@ id            		varchar(1000),
 start         		date,
 stop			    date,
 patient       		varchar(1000),
+organization            varchar(1000),
 provider			varchar(1000),
 payer			varchar(1000),
 encounterclass		varchar(1000),
@@ -157,7 +158,6 @@ description         varchar(1000),
 base_cost			    numeric,
 reasoncode          varchar(1000),
 reasondescription   varchar(1000),
-organization        varchar(1000)
 );
 
 --HINT DISTRIBUTE_ON_RANDOM
