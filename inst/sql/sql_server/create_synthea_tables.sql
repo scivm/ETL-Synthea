@@ -156,7 +156,8 @@ code                varchar(1000),
 description         varchar(1000),
 base_cost			    numeric,
 reasoncode          varchar(1000),
-reasondescription   varchar(1000)
+reasondescription   varchar(1000),
+organization        varchar(1000)
 );
 
 --HINT DISTRIBUTE_ON_RANDOM
